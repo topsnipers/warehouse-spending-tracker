@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Warehouse Spending Tracker</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: #333;
+  line-height: 1.8;
+}
+h1 { font-size: 28px; margin-bottom: 8px; }
+h2 { font-size: 18px; margin-top: 32px; color: #555; }
+.updated { font-size: 13px; color: #888; margin-bottom: 32px; }
+ul { padding-left: 20px; }
+li { margin-bottom: 8px; }
+.footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid #eee; font-size: 12px; color: #aaa; }
+</style>
+</head>
+<body>
+  <h1>Privacy Policy</h1>
+  <p class="updated">Last updated: March 15, 2026</p>
+
+  <p><strong>Warehouse Spending Tracker</strong> is a browser extension that analyzes purchase history from warehouse retail websites. Your privacy is important to us.</p>
+
+  <h2>Data Collection</h2>
+  <p>We do <strong>NOT</strong> collect, store, or transmit any personal data to external servers. Specifically:</p>
+  <ul>
+    <li><strong>No personal information</strong> is collected (name, email, address, etc.)</li>
+    <li><strong>No purchase data</strong> is sent to any server</li>
+    <li><strong>No analytics or tracking</strong> scripts are used</li>
+    <li><strong>No cookies</strong> are set by this extension</li>
+    <li><strong>No browsing history</strong> is accessed beyond the specific pages needed for analysis</li>
+  </ul>
+
+  <h2>How Data Is Processed</h2>
+  <p>All purchase data analysis is performed <strong>entirely locally</strong> within your browser:</p>
+  <ul>
+    <li>Receipt data is read from the retailer's website while you are logged in</li>
+    <li>Data is stored in your browser's local storage (<code>chrome.storage.local</code>)</li>
+    <li>Analysis, statistics, and exports are generated on your device</li>
+    <li>Share card images are rendered locally using the HTML Canvas API</li>
+  </ul>
+
+  <h2>Permissions</h2>
+  <p>This extension requests the following permissions:</p>
+  <ul>
+    <li><strong>storage</strong> — To save scraped receipt data and user preferences locally</li>
+    <li><strong>activeTab</strong> — To interact with the current tab when you initiate a scan</li>
+    <li><strong>tabs</strong> — To open the results page in a new tab</li>
+    <li><strong>Host permission (costco.com)</strong> — To read receipt data from the Costco Orders &amp; Purchases page</li>
+  </ul>
+
+  <h2>Pro License</h2>
+  <p>License key validation is performed entirely offline using a client-side checksum algorithm. No license server or external validation is used. Your license key is stored locally in <code>chrome.storage.local</code>.</p>
+
+  <h2>Third-Party Services</h2>
+  <p>This extension does not use any third-party analytics, advertising, or data processing services.</p>
+
+  <h2>Data Deletion</h2>
+  <p>You can delete all stored data at any time by:</p>
+  <ul>
+    <li>Uninstalling the extension (all local data is automatically removed)</li>
+    <li>Clearing your browser's extension storage</li>
+  </ul>
+
+  <h2>Disclaimer</h2>
+  <p>This extension is <strong>not affiliated with, endorsed by, or connected to Costco Wholesale Corporation</strong> or any other retailer. All trademarks belong to their respective owners.</p>
+
+  <h2>Changes to This Policy</h2>
+  <p>We may update this privacy policy from time to time. Any changes will be reflected in the "Last updated" date above.</p>
+
+  <h2>Contact</h2>
+  <p>If you have any questions about this privacy policy, please open an issue on our GitHub repository or contact us through the Chrome Web Store listing.</p>
+
+  <div class="footer">
+    Warehouse Spending Tracker &mdash; Privacy Policy
+  </div>
+</body>
+</html>

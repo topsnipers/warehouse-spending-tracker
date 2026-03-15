@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  width: 320px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #333;
+  padding: 16px;
+}
+h1 {
+  font-size: 16px;
+  color: #e31837;
+  margin-bottom: 4px;
+}
+.subtitle {
+  font-size: 11px;
+  color: #888;
+  margin-bottom: 14px;
+}
+.scan-mode {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+.scan-mode label {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 6px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  transition: border-color 0.2s, background 0.2s;
+}
+.scan-mode label:has(input:checked) {
+  border-color: #e31837;
+  background: #fef2f2;
+}
+.scan-mode input { display: none; }
+.scan-mode .mode-desc {
+  font-size: 10px;
+  font-weight: 400;
+  color: #888;
+  margin-top: 2px;
+}
+button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 8px;
+  transition: opacity 0.2s;
+}
+button:hover { opacity: 0.85; }
+button:disabled { opacity: 0.4; cursor: not-allowed; }
+#btnStart {
+  background: #e31837;
+  color: white;
+}
+#btnResults {
+  background: #0060a9;
+  color: white;
+}
+#status {
+  font-size: 12px;
+  color: #666;
+  min-height: 36px;
+  line-height: 1.4;
+  margin-top: 4px;
+  white-space: pre-line;
+}
+.progress-bar {
+  height: 4px;
+  background: #eee;
+  border-radius: 2px;
+  margin-top: 8px;
+  overflow: hidden;
+  display: none;
+}
+.progress-bar .fill {
+  height: 100%;
+  background: #e31837;
+  width: 0%;
+  transition: width 0.3s;
+}
+.last-scrape {
+  font-size: 10px;
+  color: #aaa;
+  margin-top: 8px;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+  <h1>Warehouse Spending Tracker</h1>
+  <p class="subtitle">Analyze your Costco purchase history</p>
+
+  <div class="scan-mode">
+    <label>
+      <input type="radio" name="scanMode" value="quick" checked>
+      Quick Scan
+      <span class="mode-desc">Summary only</span>
+    </label>
+    <label>
+      <input type="radio" name="scanMode" value="detailed">
+      Detailed Scan <span id="detailedProTag" style="font-size:9px;color:#FFA500;font-weight:700;">PRO</span>
+      <span class="mode-desc">Items + payment</span>
+    </label>
+  </div>
+
+  <button id="btnStart">Start Scraping</button>
+  <button id="btnResults" style="display:none">View Results</button>
+  <div id="status"></div>
+  <div class="progress-bar" id="progressBar"><div class="fill" id="progressFill"></div></div>
+  <div class="last-scrape" id="lastScrape"></div>
+  <div id="proStatus" style="text-align:center;margin-top:6px;display:none;">
+    <span style="font-size:10px;color:#2e7d32;font-weight:600;">✓ Pro Activated</span>
+  </div>
+  <div style="font-size:9px;color:#bbb;text-align:center;margin-top:10px;">Not affiliated with Costco Wholesale.</div>
+  <script src="../lib/pro.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

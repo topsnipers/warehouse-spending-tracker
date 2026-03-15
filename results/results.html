@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Warehouse Spending Tracker</title>
+<link rel="stylesheet" href="results.css">
+</head>
+<body>
+  <header>
+    <h1>Warehouse Spending Tracker <span id="proBadge" class="pro-badge" style="display:none">PRO</span></h1>
+    <p id="headerSub"></p>
+  </header>
+
+  <div class="container">
+    <!-- Summary Cards -->
+    <div class="summary-grid">
+      <div class="card"><div class="value" id="totalReceipts">-</div><div class="label">Total Receipts</div></div>
+      <div class="card"><div class="value" id="totalSpend">-</div><div class="label">Total Spend</div></div>
+      <div class="card"><div class="value" id="uniqueStores">-</div><div class="label">Stores Visited</div></div>
+      <div class="card"><div class="value" id="dateRange">-</div><div class="label">Date Range</div></div>
+      <div class="card"><div class="value" id="memberSince">-</div><div class="label">Member Since</div></div>
+    </div>
+
+    <!-- Export + Share -->
+    <div class="export-bar">
+      <button id="btnShare" class="share-btn">📸 Share My Stats</button>
+      <button id="exportXLSX" class="pro-feature">🔒 Export XLSX</button>
+      <button id="exportCSV" class="pro-feature">🔒 Export CSV</button>
+      <button id="exportDetailedCSV" class="pro-feature" style="display:none">🔒 Export Detailed CSV</button>
+      <button id="exportJSON" class="pro-feature">🔒 Export JSON</button>
+      <button id="btnUpgrade" class="upgrade-btn">⭐ Upgrade to Pro</button>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs" role="tablist">
+      <button class="tab active" data-tab="stores" role="tab" aria-selected="true">Store Ranking</button>
+      <button class="tab" data-tab="yearly" role="tab" aria-selected="false">Yearly Summary</button>
+      <button class="tab" data-tab="quarterly" role="tab" aria-selected="false">Quarterly Summary</button>
+      <button class="tab" data-tab="raw" role="tab" aria-selected="false">All Receipts</button>
+      <button class="tab" data-tab="items" role="tab" aria-selected="false" id="tabItems" style="display:none">Item Details</button>
+    </div>
+
+    <!-- Store Ranking -->
+    <div class="tab-content active" id="tab-stores">
+      <section>
+        <table id="storeTable">
+          <thead>
+            <tr>
+              <th data-sort="rank" class="sort-asc">#</th>
+              <th data-sort="store">Store</th>
+              <th data-sort="visits" class="num">Visits</th>
+              <th data-sort="totalSpend" class="num">Total Spend</th>
+              <th data-sort="avgSpend" class="num">Avg / Visit</th>
+              <th>Distribution</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+    </div>
+
+    <!-- Yearly Summary -->
+    <div class="tab-content" id="tab-yearly">
+      <section>
+        <table id="yearlyTable">
+          <thead>
+            <tr>
+              <th>Year</th>
+              <th class="num">Receipts</th>
+              <th class="num">Total Spend</th>
+              <th class="num">Unique Stores</th>
+              <th class="num">Avg / Receipt</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+    </div>
+
+    <!-- Quarterly Summary -->
+    <div class="tab-content" id="tab-quarterly">
+      <section>
+        <table id="quarterlyTable">
+          <thead>
+            <tr>
+              <th>Quarter</th>
+              <th class="num">Receipts</th>
+              <th class="num">Total Spend</th>
+              <th class="num">Unique Stores</th>
+              <th class="num">Avg / Receipt</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+    </div>
+
+    <!-- Raw Data -->
+    <div class="tab-content" id="tab-raw">
+      <section>
+        <table id="rawTable">
+          <thead>
+            <tr>
+              <th data-sort="date">Date</th>
+              <th>Time</th>
+              <th data-sort="store">Store</th>
+              <th data-sort="total" class="num">Total</th>
+              <th>Payment</th>
+              <th class="num">Items</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+    </div>
+
+    <!-- Item Details -->
+    <div class="tab-content" id="tab-items">
+      <section>
+        <div id="itemsPlaceholder" style="text-align:center;padding:40px;color:#888;">
+          Run a <strong>Detailed Scan</strong> to see item-level data.
+        </div>
+        <table id="itemsTable" style="display:none">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Store</th>
+              <th>Item #</th>
+              <th>Description</th>
+              <th class="num">Qty</th>
+              <th class="num">Unit Price</th>
+              <th class="num">Amount</th>
+              <th>Tax</th>
+              <th>Payment</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+    </div>
+  </div>
+
+  <footer class="disclaimer">
+    This extension is not affiliated with, endorsed by, or connected to Costco Wholesale Corporation.
+    All purchase data is processed locally in your browser. No personal data is collected or transmitted.
+  </footer>
+
+  <script src="../lib/pro.js"></script>
+  <script src="../lib/xlsx.mini.min.js"></script>
+  <script src="results.js"></script>
+</body>
+</html>
